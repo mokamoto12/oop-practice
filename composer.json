@@ -1,0 +1,29 @@
+{
+    "name": "mokamoto12/aws-asin",
+    "type": "project",
+    "description": "Object oriented programing practice.",
+    "license": "MIT",
+    "authors": [
+      {
+        "name": "mokamoto12",
+        "email": "mokamoto1208@gmail.com",
+        "homepage": "http://mokamoto12.com"
+      }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mokamoto12\\OopPractice\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Mokamoto12\\OopPractice\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    }
+}
