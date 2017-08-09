@@ -21,11 +21,11 @@ class Products
     }
 
     /**
-     * @param ProductName $productName
+     * @param Name $productName
      *
      * @return Products
      */
-    public function filterName(ProductName $productName): Products
+    public function filterName(Name $productName): Products
     {
         return new Products(array_filter($this->products, function (Product $product) use ($productName) {
             return $product->sameNameAs($productName);

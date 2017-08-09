@@ -3,10 +3,10 @@
 namespace Mokamoto12\OopPractice\Domain\Model\Product;
 
 /**
- * Class ProductName
+ * Class Name
  * @package Mokamoto12\OopPractice\Domain\Model\Product
  */
-class ProductName
+class Name
 {
     private $name;
 
@@ -37,7 +37,7 @@ class ProductName
     }
 
     /**
-     * @param ProductName $other
+     * @param Name $other
      *
      * @return bool
      */

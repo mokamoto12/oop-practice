@@ -2,7 +2,7 @@
 
 namespace Mokamoto12\OopPractice;
 
-use Mokamoto12\OopPractice\Domain\Model\Product\ProductName;
+use Mokamoto12\OopPractice\Domain\Model\Product\Name;
 use Mokamoto12\OopPractice\Domain\Model\Product\ProductNotFoundException;
 use Mokamoto12\OopPractice\Domain\Model\Product\ProductRepository;
 
@@ -38,7 +38,7 @@ class Application
         }
 
         try {
-            $products = $this->repository->findBy(new ProductName($argv[1]));
+            $products = $this->repository->findBy(new Name($argv[1]));
             echo $products->cliFormat();
         } catch (ProductNotFoundException $e) {
             echo $e->getMessage();

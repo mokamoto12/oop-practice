@@ -9,9 +9,9 @@ namespace Mokamoto12\OopPractice\Domain\Model\Product;
 interface ProductRepository
 {
     /**
-     * @param ProductName $productName
+     * @param Name $productName
      *
      * @return Products
      */
-    public function findBy(ProductName $productName): Products;
+    public function findBy(Name $productName): Products;
 }

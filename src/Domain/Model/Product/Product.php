@@ -14,10 +14,10 @@ class Product
     /**
      * Product constructor.
      *
-     * @param ProductName $productName
+     * @param Name $productName
      * @param Price $price
      */
-    public function __construct(ProductName $productName, Price $price)
+    public function __construct(Name $productName, Price $price)
     {
         $this->name = $productName;
         $this->price = $price;
@@ -42,11 +42,11 @@ class Product
     }
 
     /**
-     * @param ProductName $productName
+     * @param Name $productName
      *
      * @return bool
      */
-    public function sameNameAs(ProductName $productName): bool
+    public function sameNameAs(Name $productName): bool
     {
         return $this->name->sameValueAs($productName);
     }

@@ -4,7 +4,7 @@ namespace Mokamoto12\OopPractice\Infrastructure\Persistence\Fixture;
 
 use Mokamoto12\OopPractice\Domain\Model\Product\Price;
 use Mokamoto12\OopPractice\Domain\Model\Product\Product;
-use Mokamoto12\OopPractice\Domain\Model\Product\ProductName;
+use Mokamoto12\OopPractice\Domain\Model\Product\Name;
 use Mokamoto12\OopPractice\Domain\Model\Product\ProductNotFoundException;
 use Mokamoto12\OopPractice\Domain\Model\Product\ProductRepository;
 use Mokamoto12\OopPractice\Domain\Model\Product\Products;
@@ -32,16 +32,16 @@ class ProductRepositoryFixture implements ProductRepository
             ['F', 3500]
         ];
         $this->products = new Products(array_map(function ($d) {
-            return new Product(new ProductName($d[0]), new Price($d[1]));
+            return new Product(new Name($d[0]), new Price($d[1]));
         }, $data));
     }
 
     /**
-     * @param ProductName $productName
+     * @param Name $productName
      *
      * @return Products
      */
-    public function findBy(ProductName $productName): Products
+    public function findBy(Name $productName): Products
     {
         $filteredProducts = $this->products->filterName($productName);
         if ($filteredProducts->empty()) {
