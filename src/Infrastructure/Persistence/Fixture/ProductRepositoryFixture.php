@@ -31,7 +31,7 @@ class ProductRepositoryFixture implements ProductRepository
             ['E', 3000],
             ['F', 3500]
         ];
-        $this->products = new Products(array_map(function ($d) {
+        $this->products = new Products(array_map(function($d) {
             return new Product(new Name($d[0]), new Price($d[1]));
         }, $data));
     }
