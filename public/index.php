@@ -4,5 +4,7 @@ use Mokamoto12\OopPractice\Infrastructure\Persistence\Fixture\ProductRepositoryF
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+define('APP_DIR', './../' . __DIR__);
+
 $app = new Application(new ProductRepositoryFixture());
 $app->run($argv);
