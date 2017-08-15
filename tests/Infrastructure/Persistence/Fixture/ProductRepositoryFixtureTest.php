@@ -14,11 +14,20 @@ use PHPUnit\Framework\TestCase;
  */
 class ProductRepositoryFixtureTest extends TestCase
 {
+    /**
+     * @var ProductRepositoryFixture
+     */
+    public $repository;
+
+    public function setUp()
+    {
+        $this->repository = new ProductRepositoryFixture();
+    }
+
     public function testFindBy()
     {
-        $repository = new ProductRepositoryFixture();
         $expect = new Products([new Product(new Name('B'), new Price(1500))]);
-        $this->assertEquals($expect, $repository->findBy(new Name('B')));
+        $this->assertEquals($expect, $this->repository->findBy(new Name('B')));
     }
 
     /**
@@ -27,7 +36,6 @@ class ProductRepositoryFixtureTest extends TestCase
      */
     public function testFindBy2()
     {
-        $repository = new ProductRepositoryFixture();
-        $repository->findBy(new Name('XXX'));
+        $this->repository->findBy(new Name('XXX'));
     }
 }
