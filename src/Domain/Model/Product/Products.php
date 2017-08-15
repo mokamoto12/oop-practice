@@ -27,7 +27,7 @@ class Products
      */
     public function filterName(Name $productName): Products
     {
-        return new Products(array_values(array_filter($this->products, function (Product $product) use ($productName) {
+        return new Products(array_values(array_filter($this->products, function(Product $product) use ($productName) {
             return $product->sameNameAs($productName);
         })));
     }
@@ -37,7 +37,7 @@ class Products
      */
     public function cliFormat(): string
     {
-        return implode(array_map(function (Product $product) {
+        return implode(array_map(function(Product $product) {
             return $product->cliFormat();
         }, $this->products));
     }
