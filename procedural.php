@@ -32,7 +32,7 @@ function loadProducts()
 
 function formatProducts(array $products, string $style): string
 {
-    return array_reduce($products, function ($carry, $product) use ($style) {
+    return array_reduce($products, function($carry, $product) use ($style) {
         return $carry . formatProduct($product, $style);
     });
 }
@@ -46,7 +46,7 @@ function formatProduct(array $product, string $style): string
 
 function filterProductsByName(array $products, string $name): array
 {
-    return array_filter($products, function (array $product) use ($name) {
+    return array_filter($products, function(array $product) use ($name) {
         return $product['name'] === $name;
     });
 }
