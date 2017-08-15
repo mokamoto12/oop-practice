@@ -41,7 +41,7 @@ class Name
      *
      * @return bool
      */
-    public function sameValueAs(self $other): bool
+    public function sameValueAs(Name $other): bool
     {
         return $this->toString() === $other->toString();
     }
