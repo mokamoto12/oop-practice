@@ -20,4 +20,14 @@ class ProductRepositoryFixtureTest extends TestCase
         $expect = new Products([new Product(new Name('B'), new Price(1500))]);
         $this->assertEquals($expect, $repository->findBy(new Name('B')));
     }
+
+    /**
+     * @expectedException Mokamoto12\OopPractice\Domain\Model\Product\ProductNotFoundException
+     * @expectedExceptionMessage Product name: XXX is not found.
+     */
+    public function testFindBy2()
+    {
+        $repository = new ProductRepositoryFixture();
+        $repository->findBy(new Name('XXX'));
+    }
 }

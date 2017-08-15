@@ -41,7 +41,7 @@ class Application
             $products = $this->repository->findBy(new Name($argv[1]));
             echo $products->cliFormat();
         } catch (ProductNotFoundException $e) {
-            echo $e->getMessage();
+            echo $e->getMessage() . "\n";
         }
     }
 }

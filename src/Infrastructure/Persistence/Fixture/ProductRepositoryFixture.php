@@ -45,7 +45,7 @@ class ProductRepositoryFixture implements ProductRepository
     {
         $filteredProducts = $this->products->filterName($productName);
         if ($filteredProducts->empty()) {
-            throw new ProductNotFoundException("Product name: {$productName} is not found.\n");
+            throw new ProductNotFoundException("Product name: {$productName} is not found.");
         }
         return $filteredProducts;
     }
