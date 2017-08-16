@@ -5,6 +5,7 @@ namespace Mokamoto12\OopPractice\Infrastructure\Persistence\CSV;
 use Mokamoto12\OopPractice\Domain\Model\Product\Name;
 use Mokamoto12\OopPractice\Domain\Model\Product\Price;
 use Mokamoto12\OopPractice\Domain\Model\Product\Product;
+use Mokamoto12\OopPractice\Domain\Model\Product\ProductNotFoundException;
 use Mokamoto12\OopPractice\Domain\Model\Product\ProductRepository;
 use Mokamoto12\OopPractice\Domain\Model\Product\Products;
 
@@ -42,8 +43,12 @@ class ProductRepositoryCSV implements ProductRepository
      */
     public function findBy(Name $productName): Products
     {
-        return new Products(array_values(array_filter($this->products, function (Product $product) use ($productName) {
+        $filteredProducts = array_filter($this->products, function (Product $product) use ($productName) {
             return $product->sameNameAs($productName);
-        })));
+        });
+        if (empty($filteredProducts)) {
+            throw new ProductNotFoundException("Product name: {$productName} is not found.");
+        }
+        return new Products(array_values($filteredProducts));
     }
 }
