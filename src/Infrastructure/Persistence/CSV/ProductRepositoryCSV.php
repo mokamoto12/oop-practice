@@ -3,6 +3,8 @@
 namespace Mokamoto12\OopPractice\Infrastructure\Persistence\CSV;
 
 use Mokamoto12\OopPractice\Domain\Model\Product\Name;
+use Mokamoto12\OopPractice\Domain\Model\Product\Price;
+use Mokamoto12\OopPractice\Domain\Model\Product\Product;
 use Mokamoto12\OopPractice\Domain\Model\Product\ProductRepository;
 use Mokamoto12\OopPractice\Domain\Model\Product\Products;
 
@@ -13,9 +15,9 @@ use Mokamoto12\OopPractice\Domain\Model\Product\Products;
 class ProductRepositoryCSV implements ProductRepository
 {
     /**
-     * @var bool|resource
+     * @var Product[]
      */
-    private $fp;
+    private $products;
 
     /**
      * ProductRepositoryCSV constructor.
@@ -24,9 +26,12 @@ class ProductRepositoryCSV implements ProductRepository
      */
     public function __construct(string $path)
     {
-        $fp = fopen($path, 'r');
-        if ($fp === false) {
-            throw new
+        $handle = fopen($path, 'r');
+        if ($handle === false) {
+            throw new FileNotFoundException("File path: {$path} is not found.");
+        }
+        while (($data = fgetcsv($handle)) !== false) {
+            $this->products[] = new Product(new Name($data[0]), new Price((int)$data[1]));
         }
     }
 
@@ -37,5 +42,8 @@ class ProductRepositoryCSV implements ProductRepository
      */
     public function findBy(Name $productName): Products
     {
+        return new Products(array_values(array_filter($this->products, function (Product $product) use ($productName) {
+            return $product->sameNameAs($productName);
+        })));
     }
 }
